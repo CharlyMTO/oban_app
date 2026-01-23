@@ -98,9 +98,30 @@ config :oban_app, Oban,
   queues: [default: 10, heavy: 15]
 
 # Configure ChromicPDF
-config :chromic_pdf,
-  chrome_executable: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-  session_pool: [
-    size: 2,
-    timeout: 10_000
-  ]
+# Auto-detect Chrome/Chromium path based on OS
+chrome_path =
+  cond do
+    File.exists?("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe") ->
+      "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+
+    System.find_executable("chromium-browser") ->
+      System.find_executable("chromium-browser")
+
+    System.find_executable("google-chrome") ->
+      System.find_executable("google-chrome")
+
+    System.find_executable("chromium") ->
+      System.find_executable("chromium")
+
+    true ->
+      nil
+  end
+
+if chrome_path do
+  config :chromic_pdf,
+    chrome_executable: chrome_path,
+    session_pool: [
+      size: 2,
+      timeout: 10_000
+    ]
+end

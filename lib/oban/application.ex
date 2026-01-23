@@ -7,21 +7,30 @@ defmodule ObanApp.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [
-      ObanWeb.Telemetry,
-      ObanApp.Repo,
-      {DNSCluster, query: Application.get_env(:oban_app, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: ObanApp.PubSub},
-      # Start Oban
-      {Oban, Application.fetch_env!(:oban_app, Oban)},
-      # Start ChromicPDF
-      {ChromicPDF,
-       discard_stderr: false},
-      # Start a worker by calling: Oban.Worker.start_link(arg)
-      # {Oban.Worker, arg},
-      # Start to serve requests, typically the last entry
-      ObanWeb.Endpoint
-    ]
+    # Only start ChromicPDF if Chrome/Chromium is available
+    chromic_pdf_child =
+      if Application.get_env(:chromic_pdf, :chrome_executable) do
+        [{ChromicPDF, discard_stderr: false}]
+      else
+        []
+      end
+
+    children =
+      [
+        ObanWeb.Telemetry,
+        ObanApp.Repo,
+        {DNSCluster, query: Application.get_env(:oban_app, :dns_cluster_query) || :ignore},
+        {Phoenix.PubSub, name: ObanApp.PubSub},
+        # Start Oban
+        {Oban, Application.fetch_env!(:oban_app, Oban)}
+      ] ++
+        chromic_pdf_child ++
+        [
+          # Start a worker by calling: Oban.Worker.start_link(arg)
+          # {Oban.Worker, arg},
+          # Start to serve requests, typically the last entry
+          ObanWeb.Endpoint
+        ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
