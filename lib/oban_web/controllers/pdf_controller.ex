@@ -13,8 +13,8 @@ defmodule ObanWeb.PdfController do
         filename = "output_#{timestamp}.pdf"
         filepath = Path.join(pdf_dir, filename)
 
-        # Guardar el PDF
-        File.write!(filepath, pdf_content)
+        # Guardar el PDF en modo binario
+        File.write!(filepath, pdf_content, [:binary])
 
         # Responder con éxito
         conn
