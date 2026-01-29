@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinity Exteriors Contract</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 1200px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding-bottom: 40px;
+            overflow: hidden;
+        }
+
+        /* Encabezado con imagen de fondo oscura */
+        .header {
+            background: #222;
+            /* Color sólido de respaldo */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            color: white;
+            padding: 60px 20px;
+            clip-path: ellipse(110% 100% at 50% 0%);
+            /* Crea el efecto de curva inferior */
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .subtitle {
+            color: #31b3db;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        /* Cuerpo del documento */
+        .content {
+            padding: 40px 20px;
+        }
+
+        .customer-name {
+            color: #31b3db;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .address {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+        }
+
+        .phone {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* Tabla de información */
+        .info-table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            background-color: #111;
+            color: white;
+            padding: 10px;
+            border: 1px solid #333;
+            font-size: 14px;
+        }
+
+        .info-table .date-row td {
+            background-color: #31b3db;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Pie de página */
+        .footer {
+            margin-top: 40px;
+            border-top: 3px solid #ccc;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 20px;
+        }
+
+        .advisor {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .advisor strong {
+            color: #000;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .contact-info a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .icon {
+            color: #31b3db;
+            margin-right: 5px;
+        }
+
+        .text {
+            text-align: justify;
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .text p {
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+
+        .acknowledgments-section {
+            font-family: Arial, sans-serif;
+            background-color: #d1d3d4;
+            /* Fondo gris claro de la imagen */
+            padding: 30px;
+            color: #333;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .ack-header {
+            border-bottom: 2px solid #808285;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+        }
+
+        .ack-header h3 {
+            margin: 0;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #000;
+        }
+
+        .ack-header h2 {
+            margin: 0;
+            font-size: 32px;
+            text-transform: uppercase;
+            color: #31b3db;
+            /* Azul cian de la marca */
+        }
+
+        .ack-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ack-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        .checkmark {
+            color: #28a745;
+            /* Verde para el check */
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .ack-text strong {
+            text-decoration: underline;
+        }
+
+
+        .warranty-section {
+            background: #1a1a1a url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            color: white;
+            padding: 40px;
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            text-align: left;
+            position: relative;
+        }
+
+        .warranty-section h3 {
+            margin: 0;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        .warranty-section h2 {
+            margin: 0;
+            font-size: 32px;
+            color: #31b3db;
+            text-transform: uppercase;
+        }
+
+        .warranty-content {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+            max-width: 70%;
+        }
+
+        .warranty-content strong {
+            text-decoration: underline;
+            display: block;
+            margin-top: 15px;
+        }
+
+        /* Sección de Totales */
+        .totals-section {
+            padding: 40px;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+
+        .totals-header h3 {
+            margin: 0;
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        .totals-header h2 {
+            margin: 0;
+            font-size: 32px;
+            color: #31b3db;
+            text-transform: uppercase;
+            border-bottom: 3px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .totals-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            font-size: 16px;
+        }
+
+        .totals-table td {
+            padding: 8px 0;
+        }
+
+        .totals-table .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .totals-table .border-top {
+            border-top: 2px solid #333;
+            padding-top: 15px;
+        }
+
+        .totals-table .total-row {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Tarjetas de Pago */
+        .payment-options {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .payment-card {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 10px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .header-green {
+            background-color: #28a745;
+        }
+
+        .header-blue {
+            background-color: #1a5e3a;
+        }
+
+        /* Verde oscuro */
+        .header-dark {
+            background-color: #0d3b23;
+        }
+
+        .card-body {
+            padding: 20px 10px;
+            font-size: 14px;
+        }
+
+        .card-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a5e3a;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1 class="logo">IИFINITY</h1>
+            <div style="font-size: 24px; letter-spacing: 5px;">EXTERIORS</div>
+            <div class="subtitle">ROOFING AND GUTTERS CONTRACT</div>
+        </div>
+
+        <div class="content">
+            <h2 class="customer-name">ALICIATEST TEST</h2>
+            <div class="address">123 Easy St, Milwaukee, WI 53121</div>
+            <div class="phone">(213) 302-5901</div>
+
+            <table class="info-table">
+                <tr>
+                    <td>Office phone (262) 650-5040</td>
+                </tr>
+                <tr>
+                    <td>Customer #C2240239</td>
+                </tr>
+                <tr>
+                    <td>Project # ---</td>
+                </tr>
+                <tr>
+                    <td>License # ---</td>
+                </tr>
+                <tr class="date-row">
+                    <td>6/21/2024</td>
+                </tr>
+            </table>
+
+            <br>
+            <div class="text">
+                <p><strong>Work.</strong> Contractor agrees to fully execute the Work described in the Contract
+                    Documents and reasonably inferable by Contractor as required to produce the result intended by the
+                    Contract Documents. Contractor is responsible for, and shall have sole control of the construction
+                    methods, sequences, and coordination of the Work, unless expressly stated to the contrary.</p>
+
+                <p><strong>Commencement of Work.</strong> Owner warrants that the structures on which Contractor is to
+                    work are in sound condition and capable of withstanding normal activities of construction,
+                    equipment, and operations. Contractor’s commencement of the work indicates only that the surface
+                    appears satisfactory to Contractor for the attachment of roofing, siding, or window materials.
+                    Contractor is not responsible for the construction, undulations, or structural sufficiency of any
+                    related products or surfaces that may be affected during normal construction activities. This
+                    includes but is not limited to interior drywall damage, stucco dislodging or falling off, decking or
+                    rafter cracks or breaks, soffit overhang damage or other damage that does not relate to roofing and
+                    could not be easily identified during normal working activity.</p>
+
+                <p><strong>Construction Materials.</strong> Excess materials delivered to job site and/or materials not
+                    physically attached to the structure after Substantial Completion of the work contemplated by this
+                    Contract shall remain the property of Contractor.</p>
+
+                <p><strong>Insurance.</strong> Contractor shall maintain workers’ compensation, automobile liability,
+                    commercial general liability and such other insurance as required by law. Contractor will furnish a
+                    Certificate of Insurance evidencing the types and amounts of its coverage, upon request. Owner shall
+                    maintain homeowners’ or property insurance covering all physical loss expressly including, but not
+                    limited to, coverage for collapse, fire, wind damage, theft, vandalism and malicious mischief,
+                    naming Contractor as additional insured.</p>
+
+                <p>Homeowner authorized signature: ____________________ Infinity Exteriors authorized signature:
+                    ____________________<br>
+                    Not Signed Not Signed<br>
+                    Signature</p>
+
+                <p><strong>Environmental Hazards.</strong> Contractor is not responsible for any environmental hazards
+                    identified or released at Jobsite. Owner acknowledges that hazardous materials may be released by
+                    Contractor during the normal course of Contractor’s work. Such hazardous materials may include,
+                    without limitation, mold, dust, chimney soot, creosote, and other particulates that may or may not
+                    become airborne. Owner expressly acknowledges ownership of any waste generated at the Jobsite,
+                    whether or not such waste contains hazardous materials. Except to the extent of the Contractor’s
+                    negligent or intentional acts or omissions, Owner shall be solely responsible for all risk, shall
+                    indemnify and hold Contractor harmless and free of liability, and shall bear the costs of any
+                    removal or correction of environmental materials at the Jobsite.</p>
+
+                <p><strong>Asbestos.</strong> This Contract is based on Contractor not discovering or coming into
+                    contact with asbestos-containing materials (“ACMs”). Contractor is not responsible for expenses,
+                    claims or damages arising out of the presence, disturbance or removal of ACMs. Contractor shall be
+                    compensated for additional expenses resulting from the presence of ACMs. Owner agrees to indemnify
+                    Contractor from and against any liability, damages, loss, claims, demands or citations arising out
+                    of the presence of ACMs.</p>
+
+                <p><strong>Noise, Fumes and Emissions.</strong> Owner is aware that roofing construction produces noise
+                    and roofing products emit fumes, vapors and odors during the application process. Some people are
+                    more sensitive to these noises and emissions than others. Owner shall hold Contractor harmless from
+                    claims from third parties relating to noise, fumes and odors that are emitted during the normal
+                    roofing process.</p>
+
+                <p><strong>Jobsite Conditions.</strong> If the conditions encountered at the Jobsite are (a) conditions
+                    materially different from those indicated in the Contract Documents; or (b) unusual or unknown
+                    conditions materially different from those ordinarily encountered or generally recognized as
+                    inherent in the Work provided for in the Contract Documents, the Contractor shall stop Work in the
+                    affected area and give prompt notice of the condition to the Owner. The Contractor shall not be
+                    required to perform any Work relating to the unknown condition without the written mutual agreement
+                    of the Parties. Any change in the Contract Price or Contract Schedule shall be determined as
+                    outlined in the section herein titled Changes.</p>
+
+                <p><strong>Marketing/Advertising.</strong> Homeowner/building owner will allow Contractor to utilize
+                    photos of the home where services will be/have been provided in print and/or digital marketing.</p>
+
+                <p><strong>Safety.</strong> Contractor is not responsible for the safety of persons on the roof other
+                    than its subcontractors and employees. Owner agrees to indemnify and hold Contractor harmless from
+                    claims for personal injury by persons or entities that Owner has allowed or authorized to be on the
+                    roof or inside construction zone.</p>
+
+                <p><strong>Payment.</strong> Owner shall timely make all payments (within 10 days)required by this
+                    Contract and the attached Payment Schedule. Time is of the essence as to all terms of payment. Owner
+                    agrees that, in addition to other remedies available to Contractor, if payment is not timely made,
+                    Contractor shall be entitled to a service charge of $300.00 plus 5% late fee if after 10 days and
+                    1.5% every 30 days(18%APR) on all past due amounts, plus, if not contrary to any law, all costs of
+                    collection including actual attorneys’ fees. Contractor shall furnish lien waivers to Owner at the
+                    time each Progress Payment and the Final Payment is made to Contractor for the proportionate value
+                    of all labor and materials ordered or delivered as of the time the payment is made. Final Payment
+                    shall constitute acceptance and approval of all Work, and a waiver of all claims by Owner, except
+                    those arising from liens or the warranty included in this Contract. No retention shall apply to any
+                    of the work.</p>
+
+                <p><strong>Changes.</strong> Contractor may request or the Owner may order changes in the Work or the
+                    timing or sequencing of the Work that impacts the Contract Price or the Contract Schedule. All such
+                    changes shall be memorialized in a written Change Order to be signed by the Parties prior to
+                    Contractor’s commencement of any new work. For changes in the Work, Owner and Contractor shall
+                    negotiate an adjustment to the Contract Price or the Contract Schedule in good faith and conclude
+                    negotiations as expeditiously as possible.</p>
+
+                <p><strong>Disputes.</strong> These Conditions shall be deemed to have been made in and governed by the
+                    laws of the State of Wisconsin. Any legal suit or action with regard to these Conditions or the Work
+                    hereunder may, at Contractor’s option, be venued in a Wisconsin Circuit Court for the county in
+                    which the Jobsite is located or in the Milwaukee County Circuit Court. Contractor may also, at
+                    Contractor’s sole discretion, elect arbitration and/or mediation in place of civil litigation,
+                    without regard to whether litigation has been commenced by Owner. If arbitration is selected by
+                    Contractor and an Arbitrator cannot be agreed upon, Contractor can petition Circuit Court for same.
+                    No matter which method of dispute resolution is selected, Contractor shall be entitled to recover
+                    attorney’s fees and costs incurred in prosecuting, defending, or collecting from any dispute with
+                    Owner.</p>
+
+                <p><strong>Warranty.</strong> Contractor warrants that all materials and equipment shall be new unless
+                    otherwise specified, of good quality, in conformance with the Contract Documents, and free from
+                    defective workmanship and materials. The Contractor further warrants that the Work shall be free
+                    from material defects not intrinsic to the design or materials required in the Contract Documents.
+                    The Contractor’s warranty does not include remedies for defects or damages caused by normal wear and
+                    tear, use for a purpose for which the Work was not intended, improper or insufficient maintenance,
+                    modifications performed by the Owner, or abuse. Contractor shall assign and provide to Owner all
+                    manufacturers’ warranties which apply to products, workmanship, or materials incorporated into the
+                    Work. Any products or materials which are covered by a manufacturer’s warranty shall be covered
+                    exclusively by that warranty. Warranties may be transferred one time to the next homeowner. A $100
+                    transferable fee along with a written notification of transfer MUST be sent to Infinity Exteriors
+                    within 6 months of change of ownership. Workmanship warranty is transferable one time for up to 12
+                    months.</p>
+
+                <p><strong>Indemnification.</strong> To the fullest extent permitted by law, Contractor shall indemnify
+                    and hold harmless the Owner and its employees from all claims for bodily injury or property damage,
+                    other than to the Work itself and other property insured, including reasonable attorneys’ fees,
+                    costs and expenses, that may arise from the performance of the Work, but only to the extent caused
+                    by the negligent acts or omissions of the Contractor and its employees, subcontractors, and material
+                    suppliers. The Contractor shall be entitled to reimbursement of any defense costs paid above the
+                    Contractor’s percentage of liability for the underlying claim to the extent provided for in this
+                    subsection. To the fullest extent permitted by law, the Owner shall indemnify and hold harmless
+                    Contractor and its employees, subcontractors, and material suppliers from all claims for bodily
+                    injury and property damage, other than property insured, including reasonable attorneys’ fees,
+                    costs, and expenses, that may arise from the performance of work by the Owner, but only to the
+                    extent caused by the negligent acts or omissions of the Owner or its employees. The Owner shall be
+                    entitled to reimbursement of any defense costs paid above the Owner’s percentage of liability for
+                    the underlying claim to the extent provided for in this subsection.</p>
+
+                <p><strong>Termination of Contract.</strong> In the event of cancellation of the Contract by the Owner,
+                    Contractor shall receive compensation from the Owner for all costs of labor and materials and all
+                    other expenses incurred through that date plus Contractor’s anticipated profit under the Contract.
+                    Contractor may unilaterally terminate this Contract at any time for any reason, including, without
+                    limitation, Owner’s failure to timely pay and Owner’s failure to timely make decisions relative to
+                    the Work. Owner shall remain obligated to pay Contractor for the value of all Work completed and
+                    materials ordered as of the date of termination, plus Contractor’s anticipated profit under the
+                    Contract.</p>
+
+                <p><strong>Contract Interpretation.</strong> The Contract Documents and subsequently issued Change
+                    Orders are essential parts of this Contract, and a requirement occurring in one is binding as though
+                    occurring in all. In resolving conflicts, discrepancies, or errors the following order of precedence
+                    shall be used: (a) the Contract (including modifications by Change Order), (b) these General
+                    Conditions, and (c) the drawings, plans or specifications, or (d) the other documents comprising the
+                    Contract Documents.</p>
+
+                <p><strong>Non-Waiver.</strong> Failure by Contractor to insist upon strict performance of any terms or
+                    conditions of this Contract or failure or delay in exercising any rights or remedies provided herein
+                    or by law shall not be deemed a waiver of any right of Contractor to insist upon strict performance
+                    hereof or any of its rights or remedies in the future.</p>
+
+                <p><strong>Severability.</strong> The provisions of this Contract are severable. If any provision shall
+                    be determined to be illegal or unenforceable, such determination shall have no effect on any other
+                    provision hereof, and the remainder of the Contract shall continue in full force and effect so that
+                    the purpose and intent of this Contract shall still be met and satisfied.</p>
+
+                <p><strong>Survival.</strong> All terms, conditions and provisions of this Contract, which by their
+                    nature are independent of the period of performance, shall survive the cancellation, termination,
+                    expiration, default or abandonment of this Contract.</p>
+
+                <p><strong>LIEN NOTICE</strong><br>
+                    AS REQUIRED BY THE WISCONSIN CONSTRUCTION LIEN LAW, INFINITY EXTERIORS LLC HEREBY NOTIFIES OWNER
+                    THAT PERSONS OR COMPANIES FURNISHING LABOR OR MATERIALS FOR THE CONSTRUCTION ON OWNER’S LAND MAY
+                    HAVE LIEN RIGHTS ON OWNER’S LAND AND BUILDING IF NOT PAID. THOSE ENTITLED TO LIEN RIGHTS, IN
+                    ADDITION TO THE UNDERSIGNED INFINITY EXTERIORS LLC, ARE THOSE WHO CONTRACT DIRECTLY WITH THE OWNER
+                    OR THOSE WHO GIVE THE OWNER NOTICE WITHIN SIXTY CALENDAR DAYS AFTER THEY FIRST FURNISH LABOR OR
+                    MATERIALS FOR THE CONSTRUCTION. ACCORDINGLY, OWNER WILL PROBABLY RECEIVE NOTICES FROM THOSE WHO
+                    FURNISH LABOR OR MATERIALS FOR THE CONSTRUCTION AND SHOULD GIVE A COPY OF EACH NOTICE RECEIVED TO
+                    THE MORTGAGE LENDER, IF ANY. INFINITY EXTERIORS LLC AGREES TO COOPERATE WITH THE OWNER AND THE
+                    OWNER’S.</p>
+
+                <p><strong>NOTICE OF RIGHT TO CANCEL</strong><br>
+                    You may CANCEL this transaction, without any penalty or obligation, within THREE BUSINESS DAYS from
+                    the above date. If you cancel, any property traded-in, any payments made by you under the contract
+                    or sale, and any negotiable instrument executed by you will be returned within TEN BUSINESS DAYS
+                    following receipt by the seller of your cancellation notice, and any security interest arising out
+                    of the transaction will be canceled. If you cancel, you must make available to the seller, at your
+                    residence, in substantially as good condition as when received by you, any goods delivered to you
+                    under this contract or sale; or you may, if you wish, comply with the instructions of the seller
+                    regarding the return shipment of the goods at the seller’s expense and risk. If you do make the
+                    goods available to the seller and the seller does not pick them up within 20 days of the date of
+                    your notice of cancellation, you may retain or dispose of the goods without any further obligation.
+                    To cancel this transaction, mail or deliver a signed and dated copy of this cancellation notice, or
+                    any other written notice or telegram, to: (above address)</p>
+
+            </div>
+
+
+
+            <div class="acknowledgments-section">
+                <div class="ack-header">
+                    <h3>Labor / Project</h3>
+                    <h2>Acknowledgement(s)</h2>
+                </div>
+
+                <ul class="ack-list">
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Garden lights & Garden accessories:</strong> Please have all
+                            garden lights removed as they can/will be damaged during the roofing process.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Pet feces:</strong> Please have all areas around the home cleaned
+                            up for our installers.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Lawn:</strong> This must be mowed prior to arrival.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Patio furniture / Flower Pots etc:</strong> Please have items
+                            moved to allow our installers to work 15-20' away from home minimum. Infinity will not be
+                            held responsible for damage to items that are not moved.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Material ground drop:</strong> If materials are delivered onto the
+                            grass; lawns may/will be affected; turn yellow. In most cases 2-3 weeks of watering and it
+                            will come back.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Satellite dish:</strong> You may need to contact your service for
+                            an alignment after your project.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Attic clean up:</strong> You may/will have debris from the roof
+                            fall into your attic. Homeowners are to move cars out of the garage, tarp important items in
+                            the garage & attic, PRIOR to job start. If you have original cedar shake roofing your attic
+                            will be VERY messy. Unless specified, clean up is NOT included in your job.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Existing Roofing Material:</strong> You may see a LARGE gap
+                            between the new shingles and the siding on the areas where the roof meets the wall.
+                            Depending on your type of siding damage may occur.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Flat Roof:</strong> If you have a flat roof with a pitched roofing
+                            system installed....you WILL still have minor standing water for a period of 48 hours or
+                            less.</div>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            <div class="warranty-section">
+                <h3>Lifetime Workmanship</h3>
+                <h2>Warranty</h2>
+
+                <div class="warranty-content">
+                    <strong>Lifetime workmanship warranty and "Infinite" warranty</strong>
+                    We guarantee if our products ever fail as a result of our installation we will replace them - today,
+                    tomorrow, and 50 years from now!
+                    <p>*Repairs carry no warranty unless the scope of work or addendum states otherwise.</p>
+                    <p>*IKO Cambridge does not qualify for Infinity's Infinite warranty. The Cambridge warranty does not
+                        exceed 15 years.</p>
+
+                    <strong>Full replacement manufacturer warranty</strong>
+                    Fully transferable, full replacement warranty that covers our workmanship and NEVER depreciates in
+                    value.
+
+                    <strong>Workmanship inspection</strong>
+                    At the completion of your project, an expert inspection will be completed so you know none of the
+                    details were missed!
+                </div>
+            </div>
+
+            <div class="totals-section">
+                <div class="totals-header">
+                    <h3>Project Totals &</h3>
+                    <h2>Balance Due</h2>
+                </div>
+
+                <table class="totals-table">
+                    <tr>
+                        <td>Roofing</td>
+                        <td class="amount">$15,267.12</td>
+                    </tr>
+                    <tr>
+                        <td>Gutters</td>
+                        <td class="amount">$4,022.08</td>
+                    </tr>
+                    <tr class="border-top">
+                        <td>Subtotal</td>
+                        <td class="amount">$19,289.20</td>
+                    </tr>
+                    <tr>
+                        <td>Promotions (if available)</td>
+                        <td class="amount" style="color: #28a745;">$0.00</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total</td>
+                        <td class="amount">$19,289.20</td>
+                    </tr>
+                    <tr>
+                        <td>Down payment amount</td>
+                        <td class="amount">$0.00</td>
+                    </tr>
+                </table>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <h3 style="margin-bottom: 5px;">BALANCE DUE AFTER DOWN PAYMENT:</h3>
+                    <small>(None selected)</small>
+                </div>
+
+                <div class="payment-options">
+                    <div class="payment-card">
+                        <div class="card-header header-green">Check/Cash Price</div>
+                        <div class="card-body">
+                            <span style="color: #28a745;">Paid in full</span>
+                            <div class="card-price">$19,289.20</div>
+                        </div>
+                    </div>
+                    <div class="payment-card">
+                        <div class="card-header header-blue">12 Month Financing</div>
+                        <div class="card-body">
+                            <span style="color: #1a5e3a;">No interest for 1 year</span>
+                            <div class="card-price">$19,289.20</div>
+                        </div>
+                    </div>
+                    <div class="payment-card">
+                        <div class="card-header header-dark">10 Year Financing</div>
+                        <div class="card-body">
+                            <span>Monthly payments as low as</span>
+                            <div class="card-price">$254.91 / month</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text">
+                <p><strong>Work.</strong> Contractor agrees to fully execute the Work described in the Contract
+                    Documents and reasonably inferable by Contractor as required to produce the result intended by the
+                    Contract Documents. Contractor is responsible for, and shall have sole control of the construction
+                    methods, sequences, and coordination of the Work, unless expressly stated to the contrary.</p>
+
+                <p><strong>Commencement of Work.</strong> Owner warrants that the structures on which Contractor is to
+                    work are in sound condition and capable of withstanding normal activities of construction,
+                    equipment, and operations. Contractor’s commencement of the work indicates only that the surface
+                    appears satisfactory to Contractor for the attachment of roofing, siding, or window materials.
+                    Contractor is not responsible for the construction, undulations, or structural sufficiency of any
+                    related products or surfaces that may be affected during normal construction activities. This
+                    includes but is not limited to interior drywall damage, stucco dislodging or falling off, decking or
+                    rafter cracks or breaks, soffit overhang damage or other damage that does not relate to roofing and
+                    could not be easily identified during normal working activity.</p>
+
+                <p><strong>Construction Materials.</strong> Excess materials delivered to job site and/or materials not
+                    physically attached to the structure after Substantial Completion of the work contemplated by this
+                    Contract shall remain the property of Contractor.</p>
+
+                <p><strong>Insurance.</strong> Contractor shall maintain workers’ compensation, automobile liability,
+                    commercial general liability and such other insurance as required by law. Contractor will furnish a
+                    Certificate of Insurance evidencing the types and amounts of its coverage, upon request. Owner shall
+                    maintain homeowners’ or property insurance covering all physical loss expressly including, but not
+                    limited to, coverage for collapse, fire, wind damage, theft, vandalism and malicious mischief,
+                    naming Contractor as additional insured.</p>
+
+                <p>Homeowner authorized signature: ____________________ Infinity Exteriors authorized signature:
+                    ____________________<br>
+                    Not Signed Not Signed<br>
+                    Signature</p>
+
+                <p><strong>Environmental Hazards.</strong> Contractor is not responsible for any environmental hazards
+                    identified or released at Jobsite. Owner acknowledges that hazardous materials may be released by
+                    Contractor during the normal course of Contractor’s work. Such hazardous materials may include,
+                    without limitation, mold, dust, chimney soot, creosote, and other particulates that may or may not
+                    become airborne. Owner expressly acknowledges ownership of any waste generated at the Jobsite,
+                    whether or not such waste contains hazardous materials. Except to the extent of the Contractor’s
+                    negligent or intentional acts or omissions, Owner shall be solely responsible for all risk, shall
+                    indemnify and hold Contractor harmless and free of liability, and shall bear the costs of any
+                    removal or correction of environmental materials at the Jobsite.</p>
+
+                <p><strong>Asbestos.</strong> This Contract is based on Contractor not discovering or coming into
+                    contact with asbestos-containing materials (“ACMs”). Contractor is not responsible for expenses,
+                    claims or damages arising out of the presence, disturbance or removal of ACMs. Contractor shall be
+                    compensated for additional expenses resulting from the presence of ACMs. Owner agrees to indemnify
+                    Contractor from and against any liability, damages, loss, claims, demands or citations arising out
+                    of the presence of ACMs.</p>
+
+                <p><strong>Noise, Fumes and Emissions.</strong> Owner is aware that roofing construction produces noise
+                    and roofing products emit fumes, vapors and odors during the application process. Some people are
+                    more sensitive to these noises and emissions than others. Owner shall hold Contractor harmless from
+                    claims from third parties relating to noise, fumes and odors that are emitted during the normal
+                    roofing process.</p>
+
+                <p><strong>Jobsite Conditions.</strong> If the conditions encountered at the Jobsite are (a) conditions
+                    materially different from those indicated in the Contract Documents; or (b) unusual or unknown
+                    conditions materially different from those ordinarily encountered or generally recognized as
+                    inherent in the Work provided for in the Contract Documents, the Contractor shall stop Work in the
+                    affected area and give prompt notice of the condition to the Owner. The Contractor shall not be
+                    required to perform any Work relating to the unknown condition without the written mutual agreement
+                    of the Parties. Any change in the Contract Price or Contract Schedule shall be determined as
+                    outlined in the section herein titled Changes.</p>
+
+                <p><strong>Marketing/Advertising.</strong> Homeowner/building owner will allow Contractor to utilize
+                    photos of the home where services will be/have been provided in print and/or digital marketing.</p>
+
+                <p><strong>Safety.</strong> Contractor is not responsible for the safety of persons on the roof other
+                    than its subcontractors and employees. Owner agrees to indemnify and hold Contractor harmless from
+                    claims for personal injury by persons or entities that Owner has allowed or authorized to be on the
+                    roof or inside construction zone.</p>
+
+                <p><strong>Payment.</strong> Owner shall timely make all payments (within 10 days)required by this
+                    Contract and the attached Payment Schedule. Time is of the essence as to all terms of payment. Owner
+                    agrees that, in addition to other remedies available to Contractor, if payment is not timely made,
+                    Contractor shall be entitled to a service charge of $300.00 plus 5% late fee if after 10 days and
+                    1.5% every 30 days(18%APR) on all past due amounts, plus, if not contrary to any law, all costs of
+                    collection including actual attorneys’ fees. Contractor shall furnish lien waivers to Owner at the
+                    time each Progress Payment and the Final Payment is made to Contractor for the proportionate value
+                    of all labor and materials ordered or delivered as of the time the payment is made. Final Payment
+                    shall constitute acceptance and approval of all Work, and a waiver of all claims by Owner, except
+                    those arising from liens or the warranty included in this Contract. No retention shall apply to any
+                    of the work.</p>
+
+                <p><strong>Changes.</strong> Contractor may request or the Owner may order changes in the Work or the
+                    timing or sequencing of the Work that impacts the Contract Price or the Contract Schedule. All such
+                    changes shall be memorialized in a written Change Order to be signed by the Parties prior to
+                    Contractor’s commencement of any new work. For changes in the Work, Owner and Contractor shall
+                    negotiate an adjustment to the Contract Price or the Contract Schedule in good faith and conclude
+                    negotiations as expeditiously as possible.</p>
+
+                <p><strong>Disputes.</strong> These Conditions shall be deemed to have been made in and governed by the
+                    laws of the State of Wisconsin. Any legal suit or action with regard to these Conditions or the Work
+                    hereunder may, at Contractor’s option, be venued in a Wisconsin Circuit Court for the county in
+                    which the Jobsite is located or in the Milwaukee County Circuit Court. Contractor may also, at
+                    Contractor’s sole discretion, elect arbitration and/or mediation in place of civil litigation,
+                    without regard to whether litigation has been commenced by Owner. If arbitration is selected by
+                    Contractor and an Arbitrator cannot be agreed upon, Contractor can petition Circuit Court for same.
+                    No matter which method of dispute resolution is selected, Contractor shall be entitled to recover
+                    attorney’s fees and costs incurred in prosecuting, defending, or collecting from any dispute with
+                    Owner.</p>
+
+                <p><strong>Warranty.</strong> Contractor warrants that all materials and equipment shall be new unless
+                    otherwise specified, of good quality, in conformance with the Contract Documents, and free from
+                    defective workmanship and materials. The Contractor further warrants that the Work shall be free
+                    from material defects not intrinsic to the design or materials required in the Contract Documents.
+                    The Contractor’s warranty does not include remedies for defects or damages caused by normal wear and
+                    tear, use for a purpose for which the Work was not intended, improper or insufficient maintenance,
+                    modifications performed by the Owner, or abuse. Contractor shall assign and provide to Owner all
+                    manufacturers’ warranties which apply to products, workmanship, or materials incorporated into the
+                    Work. Any products or materials which are covered by a manufacturer’s warranty shall be covered
+                    exclusively by that warranty. Warranties may be transferred one time to the next homeowner. A $100
+                    transferable fee along with a written notification of transfer MUST be sent to Infinity Exteriors
+                    within 6 months of change of ownership. Workmanship warranty is transferable one time for up to 12
+                    months.</p>
+
+                <p><strong>Indemnification.</strong> To the fullest extent permitted by law, Contractor shall indemnify
+                    and hold harmless the Owner and its employees from all claims for bodily injury or property damage,
+                    other than to the Work itself and other property insured, including reasonable attorneys’ fees,
+                    costs and expenses, that may arise from the performance of the Work, but only to the extent caused
+                    by the negligent acts or omissions of the Contractor and its employees, subcontractors, and material
+                    suppliers. The Contractor shall be entitled to reimbursement of any defense costs paid above the
+                    Contractor’s percentage of liability for the underlying claim to the extent provided for in this
+                    subsection. To the fullest extent permitted by law, the Owner shall indemnify and hold harmless
+                    Contractor and its employees, subcontractors, and material suppliers from all claims for bodily
+                    injury and property damage, other than property insured, including reasonable attorneys’ fees,
+                    costs, and expenses, that may arise from the performance of work by the Owner, but only to the
+                    extent caused by the negligent acts or omissions of the Owner or its employees. The Owner shall be
+                    entitled to reimbursement of any defense costs paid above the Owner’s percentage of liability for
+                    the underlying claim to the extent provided for in this subsection.</p>
+
+                <p><strong>Termination of Contract.</strong> In the event of cancellation of the Contract by the Owner,
+                    Contractor shall receive compensation from the Owner for all costs of labor and materials and all
+                    other expenses incurred through that date plus Contractor’s anticipated profit under the Contract.
+                    Contractor may unilaterally terminate this Contract at any time for any reason, including, without
+                    limitation, Owner’s failure to timely pay and Owner’s failure to timely make decisions relative to
+                    the Work. Owner shall remain obligated to pay Contractor for the value of all Work completed and
+                    materials ordered as of the date of termination, plus Contractor’s anticipated profit under the
+                    Contract.</p>
+
+                <p><strong>Contract Interpretation.</strong> The Contract Documents and subsequently issued Change
+                    Orders are essential parts of this Contract, and a requirement occurring in one is binding as though
+                    occurring in all. In resolving conflicts, discrepancies, or errors the following order of precedence
+                    shall be used: (a) the Contract (including modifications by Change Order), (b) these General
+                    Conditions, and (c) the drawings, plans or specifications, or (d) the other documents comprising the
+                    Contract Documents.</p>
+
+                <p><strong>Non-Waiver.</strong> Failure by Contractor to insist upon strict performance of any terms or
+                    conditions of this Contract or failure or delay in exercising any rights or remedies provided herein
+                    or by law shall not be deemed a waiver of any right of Contractor to insist upon strict performance
+                    hereof or any of its rights or remedies in the future.</p>
+
+                <p><strong>Severability.</strong> The provisions of this Contract are severable. If any provision shall
+                    be determined to be illegal or unenforceable, such determination shall have no effect on any other
+                    provision hereof, and the remainder of the Contract shall continue in full force and effect so that
+                    the purpose and intent of this Contract shall still be met and satisfied.</p>
+
+                <p><strong>Survival.</strong> All terms, conditions and provisions of this Contract, which by their
+                    nature are independent of the period of performance, shall survive the cancellation, termination,
+                    expiration, default or abandonment of this Contract.</p>
+
+                <p><strong>LIEN NOTICE</strong><br>
+                    AS REQUIRED BY THE WISCONSIN CONSTRUCTION LIEN LAW, INFINITY EXTERIORS LLC HEREBY NOTIFIES OWNER
+                    THAT PERSONS OR COMPANIES FURNISHING LABOR OR MATERIALS FOR THE CONSTRUCTION ON OWNER’S LAND MAY
+                    HAVE LIEN RIGHTS ON OWNER’S LAND AND BUILDING IF NOT PAID. THOSE ENTITLED TO LIEN RIGHTS, IN
+                    ADDITION TO THE UNDERSIGNED INFINITY EXTERIORS LLC, ARE THOSE WHO CONTRACT DIRECTLY WITH THE OWNER
+                    OR THOSE WHO GIVE THE OWNER NOTICE WITHIN SIXTY CALENDAR DAYS AFTER THEY FIRST FURNISH LABOR OR
+                    MATERIALS FOR THE CONSTRUCTION. ACCORDINGLY, OWNER WILL PROBABLY RECEIVE NOTICES FROM THOSE WHO
+                    FURNISH LABOR OR MATERIALS FOR THE CONSTRUCTION AND SHOULD GIVE A COPY OF EACH NOTICE RECEIVED TO
+                    THE MORTGAGE LENDER, IF ANY. INFINITY EXTERIORS LLC AGREES TO COOPERATE WITH THE OWNER AND THE
+                    OWNER’S.</p>
+
+                <p><strong>NOTICE OF RIGHT TO CANCEL</strong><br>
+                    You may CANCEL this transaction, without any penalty or obligation, within THREE BUSINESS DAYS from
+                    the above date. If you cancel, any property traded-in, any payments made by you under the contract
+                    or sale, and any negotiable instrument executed by you will be returned within TEN BUSINESS DAYS
+                    following receipt by the seller of your cancellation notice, and any security interest arising out
+                    of the transaction will be canceled. If you cancel, you must make available to the seller, at your
+                    residence, in substantially as good condition as when received by you, any goods delivered to you
+                    under this contract or sale; or you may, if you wish, comply with the instructions of the seller
+                    regarding the return shipment of the goods at the seller’s expense and risk. If you do make the
+                    goods available to the seller and the seller does not pick them up within 20 days of the date of
+                    your notice of cancellation, you may retain or dispose of the goods without any further obligation.
+                    To cancel this transaction, mail or deliver a signed and dated copy of this cancellation notice, or
+                    any other written notice or telegram, to: (above address)</p>
+
+            </div>
+
+
+            <div class="acknowledgments-section">
+                <div class="ack-header">
+                    <h3>Labor / Project</h3>
+                    <h2>Acknowledgement(s)</h2>
+                </div>
+
+                <ul class="ack-list">
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Garden lights & Garden accessories:</strong> Please have all
+                            garden lights removed as they can/will be damaged during the roofing process.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Pet feces:</strong> Please have all areas around the home cleaned
+                            up for our installers.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Lawn:</strong> This must be mowed prior to arrival.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Patio furniture / Flower Pots etc:</strong> Please have items
+                            moved to allow our installers to work 15-20' away from home minimum. Infinity will not be
+                            held responsible for damage to items that are not moved.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Material ground drop:</strong> If materials are delivered onto the
+                            grass; lawns may/will be affected; turn yellow. In most cases 2-3 weeks of watering and it
+                            will come back.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Satellite dish:</strong> You may need to contact your service for
+                            an alignment after your project.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Attic clean up:</strong> You may/will have debris from the roof
+                            fall into your attic. Homeowners are to move cars out of the garage, tarp important items in
+                            the garage & attic, PRIOR to job start. If you have original cedar shake roofing your attic
+                            will be VERY messy. Unless specified, clean up is NOT included in your job.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Existing Roofing Material:</strong> You may see a LARGE gap
+                            between the new shingles and the siding on the areas where the roof meets the wall.
+                            Depending on your type of siding damage may occur.</div>
+                    </li>
+                    <li class="ack-item">
+                        <span class="checkmark">✓</span>
+                        <div class="ack-text"><strong>Flat Roof:</strong> If you have a flat roof with a pitched roofing
+                            system installed....you WILL still have minor standing water for a period of 48 hours or
+                            less.</div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="footer">
+            <div class="advisor">Project Advisor: <strong>Dan Miller</strong></div>
+            <div class="contact-info">
+                <span><span class="icon">✉</span> <a
+                        href="mailto:dmiller@infinityroofing.com">dmiller@infinityroofing.com</a></span>
+                <span><span class="icon">📞</span> (262) 825-7552</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
