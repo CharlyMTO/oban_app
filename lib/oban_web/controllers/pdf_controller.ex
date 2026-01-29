@@ -21,12 +21,26 @@ defmodule ObanWeb.PdfController do
 
     case ChromicPDF.print_to_pdf({:html, html_content}) do
       {:ok, pdf_content} ->
-        pdf_size = byte_size(pdf_content)
+        # Decodificar si está en Base64
+        decoded_pdf =
+          if is_binary(pdf_content) and String.starts_with?(pdf_content, "JVBER") do
+            Logger.info("Detectado contenido Base64, decodificando...")
+            Base.decode64!(pdf_content)
+          else
+            pdf_content
+          end
+
+        pdf_size = byte_size(decoded_pdf)
         Logger.info("PDF generado exitosamente, tamaño: #{pdf_size} bytes")
 
-        # Verificar que el contenido no esté vacío
-        if pdf_size < 100 do
-          Logger.error("PDF muy pequeño (#{pdf_size} bytes), posiblemente corrupto")
+        # Verificar que sea un PDF válido (debe comenzar con %PDF)
+        pdf_header = binary_part(decoded_pdf, 0, min(10, pdf_size))
+        Logger.info("PDF header: #{inspect(pdf_header, limit: :infinity)}")
+
+        if String.starts_with?(pdf_header, "%PDF") do
+          Logger.info("✓ PDF header válido detectado")
+        else
+          Logger.error("✗ PDF header inválido - el archivo puede estar corrupto")
         end
 
         # Crear directorio pdfs si no existe
@@ -38,12 +52,27 @@ defmodule ObanWeb.PdfController do
         filename = "output_#{timestamp}.pdf"
         filepath = Path.join(pdf_dir, filename)
 
-        # Guardar el PDF (usar modo binario para evitar corrupción)
-        case File.write(filepath, pdf_content, [:binary]) do
-          :ok ->
+        # Guardar el PDF usando IO.binwrite para mayor seguridad
+        case File.open(filepath, [:write, :binary]) do
+          {:ok, file} ->
+            IO.binwrite(file, decoded_pdf)
+            File.close(file)
             Logger.info("PDF guardado exitosamente en: #{filepath}")
+
+            # Verificar que el archivo guardado tiene el mismo tamaño
+            case File.stat(filepath) do
+              {:ok, %{size: saved_size}} ->
+                if saved_size == pdf_size do
+                  Logger.info("✓ Tamaño verificado: #{saved_size} bytes")
+                else
+                  Logger.error("✗ Tamaño no coincide! Original: #{pdf_size}, Guardado: #{saved_size}")
+                end
+              {:error, reason} ->
+                Logger.error("No se pudo verificar el archivo: #{inspect(reason)}")
+            end
+
           {:error, reason} ->
-            Logger.error("Error al guardar PDF: #{inspect(reason)}")
+            Logger.error("Error al abrir archivo para escritura: #{inspect(reason)}")
         end
 
         # También devolver el PDF al navegador
@@ -51,7 +80,7 @@ defmodule ObanWeb.PdfController do
         |> put_resp_content_type("application/pdf")
         |> put_resp_header("content-disposition", "inline; filename=\"#{filename}\"")
         |> put_resp_header("content-length", "#{pdf_size}")
-        |> send_resp(200, pdf_content)
+        |> send_resp(200, decoded_pdf)
 
       {:error, reason} ->
         Logger.error("Error generando PDF: #{inspect(reason)}")
