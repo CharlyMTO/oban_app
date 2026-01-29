@@ -95,7 +95,7 @@ config :swoosh, :api_client, false
 config :oban_app, Oban,
   repo: ObanApp.Repo,
   plugins: [Oban.Plugins.Pruner],
-  queues: [default: 40, heavy: 15]
+  queues: [default: 40, heavy: 35]
 
 # Configure ChromicPDF (uses auto-detection for Chrome/Chromium)
 config :chromic_pdf,
