@@ -1,5 +1,6 @@
 defmodule ObanWeb.PdfController do
   use ObanWeb, :controller
+  require Logger
 
   def gen_pdf(conn, _params) do
     html_content = """
@@ -16,8 +17,18 @@ defmodule ObanWeb.PdfController do
     </html>
     """
 
+    Logger.info("Iniciando generación de PDF...")
+
     case ChromicPDF.print_to_pdf({:html, html_content}) do
       {:ok, pdf_content} ->
+        pdf_size = byte_size(pdf_content)
+        Logger.info("PDF generado exitosamente, tamaño: #{pdf_size} bytes")
+
+        # Verificar que el contenido no esté vacío
+        if pdf_size < 100 do
+          Logger.error("PDF muy pequeño (#{pdf_size} bytes), posiblemente corrupto")
+        end
+
         # Crear directorio pdfs si no existe
         pdf_dir = Path.join(File.cwd!(), "pdfs")
         File.mkdir_p!(pdf_dir)
@@ -28,16 +39,23 @@ defmodule ObanWeb.PdfController do
         filepath = Path.join(pdf_dir, filename)
 
         # Guardar el PDF (usar modo binario para evitar corrupción)
-        File.write!(filepath, pdf_content, [:binary])
+        case File.write(filepath, pdf_content, [:binary]) do
+          :ok ->
+            Logger.info("PDF guardado exitosamente en: #{filepath}")
+          {:error, reason} ->
+            Logger.error("Error al guardar PDF: #{inspect(reason)}")
+        end
 
         # También devolver el PDF al navegador
         conn
         |> put_resp_content_type("application/pdf")
         |> put_resp_header("content-disposition", "inline; filename=\"#{filename}\"")
-        |> put_resp_header("content-length", "#{byte_size(pdf_content)}")
+        |> put_resp_header("content-length", "#{pdf_size}")
         |> send_resp(200, pdf_content)
 
       {:error, reason} ->
+        Logger.error("Error generando PDF: #{inspect(reason)}")
+
         conn
         |> put_resp_content_type("application/json")
         |> put_status(503)
