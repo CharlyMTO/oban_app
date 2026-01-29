@@ -100,6 +100,6 @@ config :oban_app, Oban,
 # Configure ChromicPDF (uses auto-detection for Chrome/Chromium)
 config :chromic_pdf,
   session_pool: [
-    size: 2,
-    timeout: 10_000
+    size: 10,
+    timeout: 50_000
   ]
