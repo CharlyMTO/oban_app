@@ -95,7 +95,7 @@ config :swoosh, :api_client, false
 config :oban_app, Oban,
   repo: ObanApp.Repo,
   plugins: [Oban.Plugins.Pruner],
-  queues: [default: 100]  # Increase from 25 to 100 concurrent workers
+  queues: [default: 40]  # Increase from 25 to 100 concurrent workers
 
 # Configure ChromicPDF (uses auto-detection for Chrome/Chromium)
 config :chromic_pdf,
