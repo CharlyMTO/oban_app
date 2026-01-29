@@ -19,6 +19,7 @@ defmodule ObanWeb.Router do
 
     get "/", PageController, :home
     get "/add_queue", QueueController, :add_queue
+    get "/add_queue_pdf", QueueController, :add_queue_pdf
     get "/gen_pdf", PdfController, :gen_pdf
   end
 
