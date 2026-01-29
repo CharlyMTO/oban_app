@@ -95,11 +95,11 @@ config :swoosh, :api_client, false
 config :oban_app, Oban,
   repo: ObanApp.Repo,
   plugins: [Oban.Plugins.Pruner],
-  queues: [default: 40]  # Increase from 25 to 100 concurrent workers
+  queues: [default: 30]  # Increase from 25 to 100 concurrent workers
 
 # Configure ChromicPDF (uses auto-detection for Chrome/Chromium)
 config :chromic_pdf,
   session_pool: [
-    size: 10,        # Number of concurrent Chrome instances for PDF generation
+    size: 30,        # Number of concurrent Chrome instances for PDF generation
     timeout: 30_000  # Timeout increased to 30 seconds
   ]
